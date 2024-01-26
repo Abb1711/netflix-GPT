@@ -6,6 +6,7 @@
 
 
 # Features
+
 -Login /Signup 
     -SignIN/Sign UpForm
     -redirect to Broser Page
@@ -18,6 +19,6 @@
             -Movies Lists * N
 
 -NetflixGpt
-    -Search Bar
-    -Movie Suggestion
-    
+    - Search Bar
+    - Movie Suggestion
+
