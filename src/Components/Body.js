@@ -6,7 +6,8 @@ import { createBrowserRouter } from 'react-router-dom';
 import {  onAuthStateChanged } from "firebase/auth";
 import { auth } from '../utils/Firebase';
 import { useDispatch } from 'react-redux';
-import { addUser } from '../utils/userSlice';
+
+
 //  import Header from './Header';
 
 const Body = () => {
@@ -24,27 +25,7 @@ const Body = () => {
     
   ])
 
-  useEffect(() =>{//here i have use useEffect becoz i want to run the below code once only.
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const {uid,email,displayName,photoURL} = user;
-        dispatch(
-          addUser({
-            uid:uid, 
-            email:email,
-            displayName:displayName,
-            photoURL:photoURL 
-          }));
-      
-        // ...As if user logged in navigate it to browse page
-      } else {
-        // User is signed out
-        // ...navigate user to main page if user sign - out
-       
 
-      }
-    });
-  })
 
   return (
     <div>
