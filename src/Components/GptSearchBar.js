@@ -58,7 +58,7 @@ const GptSearchBar = () => {
             // because this searchMovieTMDB is an async function, this will return an array of promises: [promise, promise...]
             // so to extract the promises, we use a function called Promise.all
             const tmdbResults = await Promise.all(promiseArray);
-            console.log(tmdbResults);
+            // console.log(tmdbResults);
     
             dispatch(addGptMoviesResults({ movieNames: gptMovies, movieResults: tmdbResults }));
         } catch (error) {
@@ -71,12 +71,12 @@ const GptSearchBar = () => {
 
 
     return (
-        <div className='pt-[10%] flex justify-center'>
-            <form className='w-1/2 bg-gray-900 grid grid-cols-12 h-15 ' onSubmit={(e) => e.preventDefault()}>
+        <div className='pt-[50%] ml-0 justify-around md:pt-[10%] flex md:justify-center '>
+            <form className='w-full md:w-1/2 bg-gray-900 grid grid-cols-12' onSubmit={(e) => e.preventDefault()}>
                 <input  ref={searchText} type='text'
-                    className='p-4 m-4 col-span-10'
+                    className='col-span-9 p-2 m-2 md:p-2 md:m-3 md:col-span-10'
                     placeholder={lang[langKey]?.gptSearchPlaceholder} />
-                <button className='col-span-2 m-4 py-2 px-4 bg-red-700 text-white rounded-lg' onClick={handleGPTSearchClick}>
+                <button className='text-center col-span-3 md:col-span-2 px-6 py-3 md:m-5 md:py-4 md:px-4 bg-red-700 text-white rounded-lg' onClick={handleGPTSearchClick}>
                     {lang[langKey]?.search}
                 </button>
             </form>

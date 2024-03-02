@@ -1,4 +1,3 @@
-// GptMovieSuggestions.js
 import React from 'react';
 import { useSelector } from 'react-redux';
 import MovieList from './MovieList';
@@ -6,17 +5,16 @@ import MovieList from './MovieList';
 const GptMovieSuggestions = () => {
   const { movieNames, movieResults } = useSelector((store) => store.gpt);
 
-  // console.log('movieNames:', movieNames);
-  // console.log('movieResults:', movieResults);
-
   if (!Array.isArray(movieNames) || movieNames.length === 0) {
-    // console.log('No movie names or empty array.');
     return null;
   }
 
+  // Filter out movie names with part/chapter numbers
+  const uniqueMovieNames = movieNames.filter(movieName => !/\bPart\s*\d+|\bChapter\s*\d+|\b\d+\b/.test(movieName));
+
   return (
     <div className='p-4 m-4 bg-black bg-opacity-90 text-white'>
-      {movieNames.map((movieName, index) => (
+      {uniqueMovieNames.map((movieName, index) => (
         <MovieList
           key={movieName}
           title={movieName}
